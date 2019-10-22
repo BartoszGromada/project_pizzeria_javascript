@@ -70,7 +70,8 @@
     }
     initAccordion() {
       const thisProduct = this;
-      select.menuProduct.clickable.addEventListener('click', function(event) {
+      const clickedElement = document.querySelector(select.menuProduct.clickable);
+      clickedElement.addEventListener('click', function(event) {
         event.preventDefault();
         thisProduct.element.classList.toggle('active');
         const activeProducts = document.querySelectorAll(select.all.menuProductsActive);
