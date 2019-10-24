@@ -115,14 +115,23 @@
       console.log('formData:', formData);
       let price = thisProduct.data.price;
       console.log(price);
-      const params = thisProduct.querySelectorAll(thisProduct.data.params);
-      console.log(params);
-        for (let param of params) {
-
+      for (let param in thisProduct.data.params) {
+        for (let option in thisProduct.data.params.options) {
+          const optionSelected = formData.hasOwnProperty(param) && formData[param].indexOf(option) > -1;
+              console.log(formData.hasOwnProperty(param));
+              console.log(formData[param].indexOf(option));
+          if (optionSelected && !option.default) {
+            price += thisProduct.data.option.price;
+            console.log(price);
+          }
+          if (optionSelected && option.default) {
+            price -= thisProduct.data.option.price;
+            console.log(price);
+          }
         }
+      }
       thisProduct.priceElem = price;
       console.log(thisProduct.priceElem);
-
     }
   }
 
