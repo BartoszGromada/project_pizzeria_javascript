@@ -33,14 +33,14 @@
     },
   };
 
-  /* const classNames = {
+  const classNames = {
     menuProduct: {
       wrapperActive: 'active',
       imageVisible: 'active',
     },
   }; 
 
-  const settings = {
+  /* const settings = {
     amountWidget: {
       defaultValue: 1,
       defaultMin: 1,
@@ -77,6 +77,7 @@
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
     }
     initAccordion() {
       const thisProduct = this;
@@ -117,11 +118,23 @@
         for (let optionId in param.options) {
           const option = param.options[optionId];
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
+          const images = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
+          console.log(images);
           if (optionSelected && !option.default) {
             price += option.price;
           }
           else if (!optionSelected && option.default) {
             price -= option.price;
+          }
+          if (optionSelected) { 
+          	for (let image of images) {
+          		image.classList.add(classNames.menuProduct.imageVisible);
+          	}
+          }
+          else {
+          	for (let image of images) {
+          		image.classList.remove(classNames.menuProduct.imageVisible);
+          	}
           }
         }
       }
