@@ -33,12 +33,12 @@
     },
   };
 
-  const classNames = {
+  /* const classNames = {
     menuProduct: {
       wrapperActive: 'active',
       imageVisible: 'active',
     },
-  };
+  }; 
 
   const settings = {
     amountWidget: {
@@ -46,7 +46,7 @@
       defaultMin: 1,
       defaultMax: 9,
     }
-  };
+  }; */
 
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
@@ -100,7 +100,7 @@
       });
       for(let input of thisProduct.formInputs) {
         input.addEventListener('change', function() {
-         thisProduct.processOrder();
+          thisProduct.processOrder();
         });
       }
       thisProduct.cartButton.addEventListener('click', function(event) {
@@ -110,30 +110,22 @@
     }
     processOrder() {
       const thisProduct = this;
-      console.log(thisProduct);
       const formData = utils.serializeFormToObject(thisProduct.form);
       let price = thisProduct.data.price;
-      console.log(price);
       for (let paramId in thisProduct.data.params) {
         const param = thisProduct.data.params[paramId];
-        console.log(param);
         for (let optionId in param.options) {
           const option = param.options[optionId];
-          console.log(option);
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
-            console.log(formData.hasOwnProperty(paramId));
-            console.log(formData[paramId].indexOf(optionId) > -1);
           if (optionSelected && !option.default) {
             price += option.price;
-            console.log(price);
           }
-          else if (optionSelected && option.default) {
+          else if (!optionSelected && option.default) {
             price -= option.price;
-            console.log(price);
           }
         }
       }
-      thisProduct.priceElem = price;
+      thisProduct.priceElem.innerHTML = price;
     }
   }
 
