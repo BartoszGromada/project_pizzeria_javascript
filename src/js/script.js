@@ -119,7 +119,6 @@
           const option = param.options[optionId];
           const optionSelected = formData.hasOwnProperty(paramId) && formData[paramId].indexOf(optionId) > -1;
           const images = thisProduct.imageWrapper.querySelectorAll('.' + paramId + '-' + optionId);
-          console.log(images);
           if (optionSelected && !option.default) {
             price += option.price;
           }
