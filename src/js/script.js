@@ -40,13 +40,13 @@
     },
   }; 
 
-  /* const settings = {
+  const settings = {
     amountWidget: {
       defaultValue: 1,
       defaultMin: 1,
       defaultMax: 9,
     }
-  }; */
+  };
 
   const templates = {
     menuProduct: Handlebars.compile(document.querySelector(select.templateOf.menuProduct).innerHTML),
@@ -61,6 +61,7 @@
       thisProduct.getElements();
       thisProduct.initAccordion();
       thisProduct.initOrderForm();
+      thisProduct.initAmountWidget();
       thisProduct.processOrder();
     }
     renderInMenu() {
@@ -78,6 +79,7 @@
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
       thisProduct.priceElem = thisProduct.element.querySelector(select.menuProduct.priceElem);
       thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
+      thisProduct.amountWidgetElem = thisProduct.element.querySelector(select.menuProduct.amountWidget);
     }
     initAccordion() {
       const thisProduct = this;
@@ -126,18 +128,43 @@
             price -= option.price;
           }
           if (optionSelected) { 
-          	for (let image of images) {
-          		image.classList.add(classNames.menuProduct.imageVisible);
-          	}
+            for (let image of images) {
+              image.classList.add(classNames.menuProduct.imageVisible);
+            }
           }
           else {
-          	for (let image of images) {
-          		image.classList.remove(classNames.menuProduct.imageVisible);
-          	}
+            for (let image of images) {
+              image.classList.remove(classNames.menuProduct.imageVisible);
+            }
           }
         }
       }
       thisProduct.priceElem.innerHTML = price;
+    }
+    initAmountWidget() {
+      const thisProduct = this;
+
+      thisProduct.amountWidget = new amountWidget(thisProduct.amountWidget);
+    }
+  }
+
+  class amountWidget {
+    constructor(element) {
+      const thisWidget = this;
+
+      thisWidget.getElements(element);
+
+
+      console.log('amountWidget: ', thisWidget);
+      console.log('constructor arguments: ', element);
+    }
+    getElements(element) {
+      const thisWidget = this;
+
+      thisWidget.element = element;
+      thisWidget.input = thisWidget.element.querySelector(select.widgets.amount.input);
+      thisWidget.linkDecrease = thisWidget.element.querySelector(select.widgets.amount.linkDecrease);
+      thisWidget.linkIncrease = thisWidget.element.querySelector(select.widgets.amount.linkIncrease);
     }
   }
 
@@ -154,11 +181,11 @@
     },
     init: function() {
       const thisApp = this;
-      /* console.log('*** App starting ***');
-      console.log('thisApp:', thisApp);
-      console.log('classNames:', classNames);
-      console.log('settings:', settings);
-      console.log('templates:', templates); */
+      //console.log('*** App starting ***');
+      //console.log('thisApp:', thisApp);
+      //console.log('classNames:', classNames);
+      //console.log('settings:', settings);
+      console.log('templates:', templates);
 
       thisApp.initData();
       thisApp.initMenu();
