@@ -156,13 +156,13 @@
             price -= option.price;
           }
           if (optionSelected) { 
-          	if(!thisProduct.params[paramId]) {
-          	  thisProduct.params[paramId] = {
-          	    label: param.label,
-          	    options: {},
-          	  };
-          	}
-          	thisProduct.params[paramId].options[optionId] = option.label;
+            if(!thisProduct.params[paramId]) {
+              thisProduct.params[paramId] = {
+                label: param.label,
+                options: {},
+              };
+            }
+            thisProduct.params[paramId].options[optionId] = option.label;
             for (let image of images) {
               image.classList.add(classNames.menuProduct.imageVisible);
             }
@@ -250,27 +250,28 @@
   }
 
   class Cart {
-  	constructor(element) {
-  	  const thisCart = this;
+    constructor(element) {
+      const thisCart = this;
 
-  	  thisCart.products = [];
-  	  thisCart.getElements(element);
-  	  thisCart.initActions();
+      thisCart.products = [];
+      thisCart.getElements(element);
+      thisCart.initActions();
 
-  	  console.log('new Cart: ', thisCart);
-  	}
-  	getElements(element) {
-  	  const thisCart = this;
+      console.log('new Cart: ', thisCart);
+    }
+    getElements(element) {
+      const thisCart = this;
 
-  	  thisCart.dom = {};
-  	  thisCart.dom.wrapper = element;
-  	  thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
-  	  thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
+      thisCart.dom = {};
+      thisCart.dom.wrapper = element;
+      thisCart.dom.toggleTrigger = thisCart.dom.wrapper.querySelector(select.cart.toggleTrigger);
+      thisCart.dom.productList = thisCart.dom.wrapper.querySelector(select.cart.productList);
     }
     initActions() {
       const thisCart = this;
 
       thisCart.dom.toggleTrigger.addEventListener('click', function(event) {
+        event.preventDefault();
         thisCart.dom.wrapper.classList.toggle(classNames.cart.wrapperActive);
       });
     }
