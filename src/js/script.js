@@ -144,11 +144,11 @@
     }
     initAmountWidget() {
       const thisProduct = this;
-      thisProduct.amountWidgetElem.addEventListener('updated', function() {
-      	thisProduct.processOrder();
-      });
-
       thisProduct.amountWidget = new amountWidget(thisProduct.amountWidgetElem);
+
+      thisProduct.amountWidgetElem.addEventListener('updated', function() {
+        thisProduct.processOrder();
+      });
     }
   }
 
@@ -157,11 +157,10 @@
       const thisWidget = this;
 
       thisWidget.getElements(element);
+      thisWidget.value = settings.amountWidget.defaultValue;
       thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
-
-      console.log('amountWidget: ', thisWidget);
-      console.log('constructor arguments: ', element);
+ 
     }
     getElements(element) {
       const thisWidget = this;
@@ -177,9 +176,12 @@
 
       /* TODO: Add validation */
 
-      thisWidget.newValue = newValue;
+      thisWidget.value = newValue;
       thisWidget.announce();
       thisWidget.input.value = thisWidget.value;
+
+      console.log(thisWidget.newValue);
+      console.log(thisWidget.value);
     }
     initActions() {
       const thisWidget = this;
@@ -187,39 +189,41 @@
         thisWidget.setValue(thisWidget.input);
       });
       thisWidget.linkDecrease.addEventListener('click', function(event) {
-      	event.preventDefault();
+        event.preventDefault();
         thisWidget.setValue(thisWidget.value - 1);
+
+        console.log(thisWidget.setValue(thisWidget.value - 1));
       });
       thisWidget.linkIncrease.addEventListener('click', function(event) {
-      	event.preventDefault();
+        event.preventDefault();
         thisWidget.setValue(thisWidget.value + 1);
+
+        console.log(thisWidget.setValue(thisWidget.value + 1));
       });
     }
     announce() {
-    	const thisWidget = this;
-    	const event= new Event('updated');
-    	thisWidget.element.dispatchEvent(event);
+      const thisWidget = this;
+      const event = new Event('updated');
+
+      thisWidget.element.dispatchEvent(event);
     }
   }
 
   const app = {
     initMenu: function() {
       const thisApp = this;
+
       for (let productData in thisApp.data.products)  {
         new product(productData, thisApp.data.products[productData]);
       }
     },
     initData: function() {
       const thisApp = this;
+
       thisApp.data = dataSource;
     },
     init: function() {
       const thisApp = this;
-      //console.log('*** App starting ***');
-      //console.log('thisApp:', thisApp);
-      //console.log('classNames:', classNames);
-      //console.log('settings:', settings);
-      console.log('templates:', templates);
 
       thisApp.initData();
       thisApp.initMenu();
