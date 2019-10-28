@@ -158,7 +158,7 @@
 
       thisWidget.getElements(element);
       thisWidget.value = settings.amountWidget.defaultValue;
-      thisWidget.setValue(thisWidget.input.value);
+      thisWidget.setValue(thisWidget.value);
       thisWidget.initActions();
  
     }
@@ -174,14 +174,14 @@
       const thisWidget = this;
       const newValue = parseInt(value);
 
-      /* TODO: Add validation */
+      if (newValue != thisWidget.value 
+      	&& newValue >= settings.amountWidget.defaultMin
+        && newValue <= settings.amountWidget.defaultMax) {
+	      thisWidget.value = newValue;
+	      thisWidget.announce();
+	  	}
 
-      thisWidget.value = newValue;
-      thisWidget.announce();
       thisWidget.input.value = thisWidget.value;
-
-      console.log(thisWidget.newValue);
-      console.log(thisWidget.value);
     }
     initActions() {
       const thisWidget = this;
@@ -191,14 +191,10 @@
       thisWidget.linkDecrease.addEventListener('click', function(event) {
         event.preventDefault();
         thisWidget.setValue(thisWidget.value - 1);
-
-        console.log(thisWidget.setValue(thisWidget.value - 1));
       });
       thisWidget.linkIncrease.addEventListener('click', function(event) {
         event.preventDefault();
         thisWidget.setValue(thisWidget.value + 1);
-
-        console.log(thisWidget.setValue(thisWidget.value + 1));
       });
     }
     announce() {
