@@ -193,7 +193,7 @@
       thisProduct.data.name = thisProduct.name;
       thisProduct.amountWidget.value = thisProduct.amount;
 
-      app.cart.add(thisProduct);
+      app.cart.add(thisProduct.params);
     }
   }
 
