@@ -123,6 +123,7 @@
     }
     initOrderForm() {
       const thisProduct = this;
+      console.log('thisProduct w initOrderForm: ', thisProduct);
       thisProduct.form.addEventListener('submit', function(event) {
         event.preventDefault();
         thisProduct.processOrder();
