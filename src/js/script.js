@@ -193,7 +193,17 @@
       thisProduct.data.name = thisProduct.name;
       thisProduct.amountWidget.value = thisProduct.amount;
 
-      app.cart.add(thisProduct.params);
+      const productAdd = {};
+      productAdd.name = thisProduct.name;
+      productAdd.amount = thisProduct.amount;
+      productAdd.price = thisProduct.price;
+      productAdd.option = thisProduct.params.option;
+      productAdd.label = thisProduct.params.label;
+
+      console.log('productAdd: ',productAdd);
+
+
+      app.cart.add(productAdd);
     }
   }
 
