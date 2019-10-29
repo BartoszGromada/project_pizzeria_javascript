@@ -194,11 +194,11 @@
       thisProduct.amountWidget.value = thisProduct.amount;
 
       const productAdd = {};
-      productAdd.name = thisProduct.name;
-      productAdd.amount = thisProduct.amount;
-      productAdd.price = thisProduct.price;
-      productAdd.option = thisProduct.params.option;
-      productAdd.label = thisProduct.params.label;
+      productAdd.name = thisProduct.data.name;
+      productAdd.amount = thisProduct.amountWidget.Value;
+      productAdd.price = thisProduct.data.price;
+      productAdd.option = thisProduct.data.params.option;
+      productAdd.label = thisProduct.data.params.label;
 
       console.log('productAdd: ',productAdd);
 
