@@ -191,13 +191,13 @@
     addToCart() {
       const thisProduct = this;
 
-      thisProduct.data.name = thisProduct.name;
-      thisProduct.amountWidget.value = thisProduct.amount;
+     // thisProduct.data.name = thisProduct.name;
+     // thisProduct.amountWidget.value = thisProduct.amount;
 
       const productAdd = {};
       productAdd.name = thisProduct.data.name;
-      productAdd.amount = thisProduct.amountWidget.Value;
-      productAdd.price = thisProduct.data.price;
+      productAdd.amount = thisProduct.amountWidget.value;
+      productAdd.price = thisProduct.price;
       productAdd.option = thisProduct.data.params.option;
       productAdd.label = thisProduct.data.params.label;
 
