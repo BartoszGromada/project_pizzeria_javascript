@@ -197,8 +197,7 @@
       productAdd.name = thisProduct.name;
       productAdd.amount = thisProduct.amount;
       productAdd.price = thisProduct.price;
-      productAdd.label = thisProduct.params.label;
-      productAdd.options = thisProduct.params.options;
+      productAdd.params = thisProduct.params;
 
       console.log('productAdd: ',productAdd);
 
