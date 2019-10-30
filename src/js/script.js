@@ -123,7 +123,6 @@
     }
     initOrderForm() {
       const thisProduct = this;
-      console.log('thisProduct w initOrderForm: ', thisProduct);
       thisProduct.form.addEventListener('submit', function(event) {
         event.preventDefault();
         thisProduct.processOrder();
@@ -178,7 +177,6 @@
       thisProduct.priceSingle = price;
       thisProduct.price = thisProduct.priceSingle * thisProduct.amountWidget.value;
       thisProduct.priceElem.innerHTML = thisProduct.price;
-      console.log(thisProduct.params);
     }
     initAmountWidget() {
       const thisProduct = this;
@@ -190,19 +188,19 @@
     }
     addToCart() {
       const thisProduct = this;
+      console.log('addToCart - dla Pawła: ',thisProduct);
 
-     // thisProduct.data.name = thisProduct.name;
-     // thisProduct.amountWidget.value = thisProduct.amount;
+      thisProduct.name = thisProduct.data.name; 
+      thisProduct.amount = thisProduct.amountWidget.value;
 
       const productAdd = {};
-      productAdd.name = thisProduct.data.name;
-      productAdd.amount = thisProduct.amountWidget.value;
+      productAdd.name = thisProduct.name;
+      productAdd.amount = thisProduct.amount;
       productAdd.price = thisProduct.price;
-      productAdd.option = thisProduct.data.params.option;
-      productAdd.label = thisProduct.data.params.label;
+      productAdd.label = thisProduct.params.label;
+      productAdd.options = thisProduct.params.options;
 
       console.log('productAdd: ',productAdd);
-
 
       app.cart.add(productAdd);
     }
@@ -267,8 +265,6 @@
       thisCart.products = [];
       thisCart.getElements(element);
       thisCart.initActions();
-
-      console.log('new Cart: ', thisCart);
     }
     getElements(element) {
       const thisCart = this;
@@ -295,8 +291,6 @@
       console.log(generatedDOM);
 
       thisCart.dom.productList.appendChild(generatedDOM);
-
-      console.log('adding product: ', menuProduct);
     }
   }
 
