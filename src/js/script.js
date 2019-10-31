@@ -188,7 +188,6 @@
     }
     addToCart() {
       const thisProduct = this;
-      console.log('addToCart - dla Pawła: ',thisProduct);
 
       thisProduct.name = thisProduct.data.name; 
       thisProduct.amount = thisProduct.amountWidget.value;
@@ -198,6 +197,7 @@
       productAdd.amount = thisProduct.amount;
       productAdd.price = thisProduct.price;
       productAdd.params = thisProduct.params;
+      productAdd.priceSingle = thisProduct.priceSingle;
 
       console.log('productAdd: ',productAdd);
 
@@ -290,6 +290,50 @@
       console.log(generatedDOM);
 
       thisCart.dom.productList.appendChild(generatedDOM);
+
+      thisCart.products.push(new cartProduct (menuProduct, generatedDOM));
+      console.log('thisCart.products: ', thisCart.products)
+    }
+  }
+
+  class cartProduct {
+    constructor (menuProduct, element) {
+      const thisCartProduct = this;
+
+      thisCartProduct.id = menuProduct.id;
+      thisCartProduct.name = menuProduct.name;
+      thisCartProduct.price = menuProduct.price;
+      thisCartProduct.priceSingle = menuProduct.priceSingle;
+      thisCartProduct.amount = menuProduct.amount;
+      thisCartProduct.params = JSON.parse(JSON.stringify(menuProduct.params));
+ 
+      thisCartProduct.getElements(element);
+
+      console.log('New cartProduct', thisCartProduct);
+      console.log('productData', menuProduct);
+
+      thisCartProduct.initAmountWidget();
+  	}
+  	getElements(element) {
+  	  const thisCartProduct = this;
+
+  	  thisCartProduct.dom = {};
+
+  	  thisCartProduct.dom.wrapper = element;
+  	  thisCartProduct.dom.amountWidget = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.amountWidget);
+  	  thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
+  	  thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
+  	  thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
+  	}
+  	initAmountWidget() {
+      const thisCartProduct = this;
+      thisCartProduct.amountWidget = new amountWidget(thisCartProduct.dom.amountWidget);
+
+      thisCartProduct.dom.amountWidget.addEventListener('updated', function() {
+        thisCartProduct.amount = thisCartProduct.amountWidget.value;
+        thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amount;
+        thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
+      });
     }
   }
 
