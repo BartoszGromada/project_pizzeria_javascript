@@ -190,7 +190,6 @@
     addToCart() {
       const thisProduct = this;
 
-      console.log('thisProduct:',thisProduct);
       thisProduct.name = thisProduct.data.name; 
       thisProduct.amount = thisProduct.amountWidget.value;
 
@@ -200,8 +199,6 @@
       productAdd.price = thisProduct.price;
       productAdd.params = thisProduct.params;
       productAdd.priceSingle = thisProduct.priceSingle;
-
-      console.log('productAdd: ',productAdd);
 
       app.cart.add(productAdd);
     }
@@ -292,7 +289,6 @@
       thisCart.dom.productList.appendChild(generatedDOM);
 
       thisCart.products.push(new cartProduct (menuProduct, generatedDOM));
-      console.log('thisCart.products: ', thisCart.products);
     }
   }
 
@@ -308,9 +304,6 @@
       thisCartProduct.params = JSON.parse(JSON.stringify(menuProduct.params));
  
       thisCartProduct.getElements(element);
-
-      console.log('New cartProduct', thisCartProduct);
-      console.log('productData', menuProduct);
 
       thisCartProduct.initAmountWidget();
     }
