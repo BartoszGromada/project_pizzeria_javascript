@@ -46,7 +46,6 @@
     },
     cartProduct: {
       amountWidget: '.widget-amount',
-      amountWidgetInput: '.widget-amount .amount',
       price: '.cart__product-price',
       edit: '[href="#edit"]',
       remove: '[href="#remove"]',
@@ -215,7 +214,7 @@
 
       thisWidget.getElements(element);
       thisWidget.value = settings.amountWidget.defaultValue;
-      thisWidget.setValue(thisWidget.value);
+      thisWidget.setValue(thisWidget.input.value);
       thisWidget.initActions();
     }
     getElements(element) {
@@ -322,15 +321,10 @@
 
       for (let product of thisCart.products) {
         thisCart.totalNumber += product.amount;
-        console.log(product.amount);
         thisCart.subtotalPrice += product.price;
       }
 
       thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
-
-      console.log(thisCart.totalNumber);
-      console.log(thisCart.subtotalPrice);
-      console.log(thisCart.totalPrice);
 
       for (let key of thisCart.renderTotalsKeys) {
         console.log(key);
@@ -375,7 +369,6 @@
 
       thisCartProduct.dom.wrapper = element;
       thisCartProduct.dom.amountWidget = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.amountWidget);
-      thisCartProduct.dom.amountWidget.input = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.amountWidgetInput);
       thisCartProduct.dom.price = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.price);
       thisCartProduct.dom.edit = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.edit);
       thisCartProduct.dom.remove = thisCartProduct.dom.wrapper.querySelector(select.cartProduct.remove);
@@ -383,7 +376,6 @@
     initAmountWidget() {
       const thisCartProduct = this;
       thisCartProduct.amountWidget = new amountWidget(thisCartProduct.dom.amountWidget);
-      thisCartProduct.amountWidget.input.value = thisCartProduct.amount;
       thisCartProduct.amountWidget.value = thisCartProduct.amount;
 
       thisCartProduct.dom.amountWidget.addEventListener('updated', function() {
@@ -426,7 +418,7 @@
     initData: function() {
       const thisApp = this;
 
-      thisApp.data = [];
+      thisApp.data = {};
       const url = settings.db.url + '/' + settings.db.product;
 
       fetch(url)
