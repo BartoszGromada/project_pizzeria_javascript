@@ -83,7 +83,7 @@
     cartProduct: Handlebars.compile(document.querySelector(select.templateOf.cartProduct).innerHTML),
   };
 
-  class product {
+  class Product {
     constructor(id, data) {
       const thisProduct = this;
       thisProduct.id = id;
@@ -412,7 +412,7 @@
       const thisApp = this;
 
       for (let productData in thisApp.data.products)  {
-        new product(productData, thisApp.data.products[productData]);
+        new Product(thisApp.data.products[productData].id, thisApp.data.products[productData]);
       }
     },
     initData: function() {
@@ -422,7 +422,15 @@
       const url = settings.db.url + '/' + settings.db.product;
 
       fetch(url)
-        .then(function())
+        .then(function(rawResponse) {
+          return rawResponse.json();
+        })
+        .then(function(parsedResponse) {
+          thisApp.data.products = parsedResponse;
+          thisApp.initMenu();
+        });
+
+      console.log('thisApp.data: ', JSON.stringify(thisApp.data));
 
     },
     initCart: function() {
@@ -435,7 +443,6 @@
       const thisApp = this;
 
       thisApp.initData();
-      thisApp.initMenu();
       thisApp.initCart();
     },
   };
