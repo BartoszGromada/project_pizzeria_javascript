@@ -319,6 +319,7 @@
       thisCart.products.push(new cartProduct (menuProduct, generatedDOM));
 
       thisCart.update();
+      console.log('test');
     }
     update() {
       const thisCart = this;
