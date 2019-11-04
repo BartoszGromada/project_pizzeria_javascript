@@ -132,7 +132,7 @@
         event.preventDefault();
         thisProduct.processOrder();
       });
-      for(let input of thisProduct.formInputs) {
+      for (let input of thisProduct.formInputs) {
         input.addEventListener('change', function() {
           thisProduct.processOrder();
         });
@@ -285,7 +285,7 @@
 
       thisCart.renderTotalsKeys = ['totalNumber', 'totalPrice', 'subtotalPrice', 'deliveryFee'];
       
-      for(let key of thisCart.renderTotalsKeys) {
+      for (let key of thisCart.renderTotalsKeys) {
         thisCart.dom[key] = thisCart.dom.wrapper.querySelectorAll(select.cart[key]);
       }
     }
