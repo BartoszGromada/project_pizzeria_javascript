@@ -202,5 +202,24 @@
       }
     }
   ],
-  "order": []
+  "order": [
+    {
+      "title": "Order witch 4 menu item",
+      "address": "Os. Bolesława Śmiałego, 1A, 44",
+      "phone": "+48696184144",
+      "totalPrice": 56,
+      "subtotalPrice": 36,
+      "deliveryFee": 20,
+      "products": [
+        {
+          "id": "Zio Stefano's Doughnut",
+          "price": 36,
+          "pricesingle": 9,
+          "amount": 4,
+          "params": {}
+        }
+      ],
+      "id": 1
+    }
+  ]
 }
