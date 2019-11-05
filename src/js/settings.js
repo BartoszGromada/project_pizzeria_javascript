@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-undef */
 
 export const select = {
   templateOf: {
@@ -87,7 +88,7 @@ export const classNames = {
   pages: {
     active: 'active',
   },
-}; 
+};
 
 export const settings = {
   hours: {
@@ -109,7 +110,7 @@ export const settings = {
     tableIdAttribute: 'data-table',
   },
   db: {
-    url: '//' + window.location.hostname + (window.location.hostname=='localhost' ? ':3131' : ''),
+    url: '//' + window.location.hostname + (window.location.hostname == 'localhost' ? ':3131' : ''),
     product: 'product',
     order: 'order',
     booking: 'booking',

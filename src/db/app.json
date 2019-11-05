@@ -1,6 +1,5 @@
 {
-  "product": [
-    {
+  "product": [{
       "id": "cake",
       "class": "small",
       "name": "Zio Stefano's Doughnut",
@@ -202,9 +201,8 @@
       }
     }
   ],
-  "order": []
-  "event": [
-    {
+  "order": [],
+  "event": [{
       "id": 1,
       "date": "2019-01-01",
       "hour": "12:30",
