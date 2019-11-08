@@ -67,13 +67,12 @@ export class Cart {
 
     thisCart.totalNumber = 0;
     thisCart.subtotalPrice = 0;
-      
-    console.log(thisCart.products);
+
     for (let product of thisCart.products) {
       thisCart.totalNumber += product.amount;
-      console.log(product.amount);
+
       thisCart.subtotalPrice += product.price;
-      console.log(product.price);
+
     }
       
     thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;
