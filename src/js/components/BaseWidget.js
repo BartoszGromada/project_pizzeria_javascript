@@ -23,8 +23,18 @@ export class BaseWidget {
     return parseInt(value);
   }
   isValid(value) {
-    return !isNaN(value) &&
-      value >= settings.amountWidget.defaultMin &&
-      value <= settings.amountWidget.defaultMax;
+    return !isNaN(value) 
   }
+  renderValue() {
+    const thisWidget = this;
+    thisWidget.dom.wrapper.innerHTML= thisWidget.value;
+  }
+  announce() {
+    const thisWidget = this;
+    const event = new CustomEvent('updated', {
+      bubbles: true
+    });
+
+    thisWidget.dom.wrapper.dispatchEvent(event);
+  } 
 }
