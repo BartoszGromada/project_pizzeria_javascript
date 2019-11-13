@@ -6,7 +6,6 @@ export class BaseWidget {
 
     thisWidget.dom = {};
     thisWidget.dom.wrapper = wrapperElement;
-
     thisWidget.correctValue = initialValue;
   }
   get value() {
@@ -17,6 +16,7 @@ export class BaseWidget {
   set value(value) {
     const thisWidget = this;
     const newValue = thisWidget.parseValue(value);
+    console.log('value', value);
 
     if (newValue != thisWidget.correctValue && thisWidget.isValid(newValue)) {
       thisWidget.correctValue = newValue;
@@ -36,7 +36,8 @@ export class BaseWidget {
   }
   renderValue() {
     const thisWidget = this;
-    thisWidget.dom.wrapper.innerHTML= thisWidget.value;
+    thisWidget.dom.wrapper.innerHTML = thisWidget.Value;
+    console.log(thisWidget.dom.wrapper);
   }
   announce() {
     const thisWidget = this;

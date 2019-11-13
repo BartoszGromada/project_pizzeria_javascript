@@ -23,10 +23,6 @@ export class amountWidget extends BaseWidget {
       && value >= settings.amountWidget.defaultMin 
       && value <= settings.amountWidget.defaultMax;
   }
-  renderValue() {
-    const thisWidget = this;
-    
-  }
   initActions() {
     const thisWidget = this;
     thisWidget.dom.input.addEventListener('change', function() {
@@ -40,5 +36,9 @@ export class amountWidget extends BaseWidget {
       event.preventDefault();
       thisWidget.setValue(thisWidget.value + 1);
     });
+  }
+  renderValue() {
+    const thisWidget = this;
+    thisWidget.dom.input.value = thisWidget.value;
   }
 }

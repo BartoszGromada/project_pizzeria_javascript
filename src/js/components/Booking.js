@@ -1,7 +1,7 @@
 /* eslint-disable linebreak-style */
 import {templates, select} from '../settings.js';
 import {utils} from '../utils.js';
-import { amountWidget } from './AmountWidget.js';
+import {amountWidget} from './AmountWidget.js';
 
 export class Booking {
   constructor(element) {
@@ -24,11 +24,13 @@ export class Booking {
 
     thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
     thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
+    thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
   }
   initWidgets() {
     const thisBooking = this;
 
     thisBooking.peopleAmount = new amountWidget(thisBooking.dom.peopleAmount);
     thisBooking.hoursAmount = new amountWidget(thisBooking.dom.hoursAmount);
+    //thisBooking.dataPicker = new amountWidget(thisBooking.dom.datePicker);
   }
 }
