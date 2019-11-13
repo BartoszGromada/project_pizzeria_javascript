@@ -8,14 +8,13 @@ export class amountWidget extends BaseWidget {
     super(element, settings.amountWidget.defaultValue);
 
     const thisWidget = this;
-
     thisWidget.getElements(element);
     thisWidget.initActions();
   }
   getElements() {
     const thisWidget = this;
 
-    thisWidget.input = thisWidget.dom.wrapper.querySelector(select.widgets.amount.input);
+    thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.amount.input);
     thisWidget.dom.linkDecrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkDecrease);
     thisWidget.dom.linkIncrease = thisWidget.dom.wrapper.querySelector(select.widgets.amount.linkIncrease);
   }
@@ -26,12 +25,12 @@ export class amountWidget extends BaseWidget {
   }
   renderValue() {
     const thisWidget = this;
-    thisWidget.dom.input.value = thisWidget.value;
+    
   }
   initActions() {
     const thisWidget = this;
-    thisWidget.input.addEventListener('change', function() {
-      thisWidget.setValue(thisWidget.input);
+    thisWidget.dom.input.addEventListener('change', function() {
+      thisWidget.setValue(thisWidget.dom.input);
     });
     thisWidget.dom.linkDecrease.addEventListener('click', function(event) {
       event.preventDefault();
