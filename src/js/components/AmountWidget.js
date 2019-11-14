@@ -3,13 +3,14 @@
 import {settings, select} from '../settings.js';
 import {BaseWidget} from './BaseWidget.js';
 
-export class amountWidget extends BaseWidget {
+export class AmountWidget extends BaseWidget {
   constructor(element) {
     super(element, settings.amountWidget.defaultValue);
 
     const thisWidget = this;
     thisWidget.getElements(element);
     thisWidget.initActions();
+    thisWidget.renderValue();
   }
   getElements() {
     const thisWidget = this;

@@ -1,9 +1,9 @@
 /* eslint-disable linebreak-style */
 
 import {select} from '../settings.js';
-import {amountWidget} from './AmountWidget.js';
+import {AmountWidget} from './AmountWidget.js';
 
-export class cartProduct {
+export class CartProduct {
   constructor (menuProduct, element) {
     const thisCartProduct = this;
 
@@ -34,11 +34,12 @@ export class cartProduct {
   }
   initAmountWidget() {
     const thisCartProduct = this;
-    thisCartProduct.amountWidget = new amountWidget(thisCartProduct.dom.amountWidget);
+    thisCartProduct.amountWidget = new AmountWidget(thisCartProduct.dom.amountWidget);
     thisCartProduct.amountWidget.value = thisCartProduct.amount;
 
     thisCartProduct.dom.amountWidget.addEventListener('updated', function() {
       thisCartProduct.price = thisCartProduct.priceSingle * thisCartProduct.amountWidget.value;
+      thisCartProduct.amount = thisCartProduct.amountWidget.value;
       thisCartProduct.dom.price.innerHTML = thisCartProduct.price;
     });
   }

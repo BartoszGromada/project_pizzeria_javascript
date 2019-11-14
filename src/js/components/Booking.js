@@ -1,7 +1,9 @@
 /* eslint-disable linebreak-style */
 import {templates, select} from '../settings.js';
 import {utils} from '../utils.js';
-import {amountWidget} from './AmountWidget.js';
+import {AmountWidget} from './AmountWidget.js';
+import {DataPicker} from './DatePicker.js';
+import {HourPicker} from './HourPicker.js';
 
 export class Booking {
   constructor(element) {
@@ -25,12 +27,14 @@ export class Booking {
     thisBooking.dom.peopleAmount = thisBooking.dom.wrapper.querySelector(select.booking.peopleAmount);
     thisBooking.dom.hoursAmount = thisBooking.dom.wrapper.querySelector(select.booking.hoursAmount);
     thisBooking.dom.datePicker = thisBooking.dom.wrapper.querySelector(select.widgets.datePicker.wrapper);
+    thisBooking.dom.hourPicker = thisBooking.dom.wrapper.querySelector(select.widgets.hourPicker.wrapper);
   }
   initWidgets() {
     const thisBooking = this;
 
-    thisBooking.peopleAmount = new amountWidget(thisBooking.dom.peopleAmount);
-    thisBooking.hoursAmount = new amountWidget(thisBooking.dom.hoursAmount);
-    //thisBooking.dataPicker = new amountWidget(thisBooking.dom.datePicker);
+    thisBooking.peopleAmount = new AmountWidget(thisBooking.dom.peopleAmount);
+    thisBooking.hoursAmount = new AmountWidget(thisBooking.dom.hoursAmount);
+    thisBooking.dataPicker = new DataPicker(thisBooking.dom.datePicker);
+    thisBooking.hourPicker = new HourPicker(thisBooking.dom.hourPicker);
   }
 }

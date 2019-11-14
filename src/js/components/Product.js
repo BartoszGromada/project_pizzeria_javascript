@@ -2,7 +2,7 @@
 
 import {select, classNames, templates} from '../settings.js';
 import {utils} from '../utils.js';
-import {amountWidget} from './AmountWidget.js';
+import {AmountWidget} from './AmountWidget.js';
 
 export class Product {
   constructor(id, data) {
@@ -106,7 +106,7 @@ export class Product {
   }
   initAmountWidget() {
     const thisProduct = this;
-    thisProduct.amountWidget = new amountWidget(thisProduct.amountWidgetElem);
+    thisProduct.amountWidget = new AmountWidget(thisProduct.amountWidgetElem);
 
     thisProduct.amountWidgetElem.addEventListener('updated', function() {
       thisProduct.processOrder();
