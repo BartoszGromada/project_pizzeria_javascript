@@ -1,5 +1,5 @@
 /* eslint-disable linebreak-style */
-import {templates, select} from '../settings.js';
+import {templates, select, settings} from '../settings.js';
 import {utils} from '../utils.js';
 import {AmountWidget} from './AmountWidget.js';
 import {DataPicker} from './DatePicker.js';
@@ -11,6 +11,50 @@ export class Booking {
 
     thisBooking.render(element);
     thisBooking.initWidgets();
+    thisBooking.getData();
+  }
+  getData() {
+    const thisBooking = this;
+
+    const startDateparam = settings.db.dateStartParamKey + '=' + utils.dateToStr(thisBooking.dataPicker.minDate);
+    const dateEndDateparam = settings.db.dateEndParamKey + '=' + utils.dateToStr(thisBooking.dataPicker.maxDate);
+
+    const params = {
+      booking: [
+        startDateparam,
+        dateEndDateparam,
+      ],
+      eventCurrent: [
+        settings.db.notRepeatParam,
+        startDateparam,
+        dateEndDateparam,
+      ],
+      eventRepeat: [
+        settings.db.repeatParam,
+        dateEndDateparam,
+      ],
+    };
+
+    // console.log('getData params: ', params);
+    
+    const urls = {
+      booking:      settings.db.url + '/' + settings.db.booking 
+                                    + '?' + params.booking.join('&'),
+      eventCurrent: settings.db.url + '/' + settings.db.event 
+                                    + '?' + params.eventCurrent.join('&'),
+      eventRepeat:  settings.db.url + '/' + settings.db.event 
+                                    + '?' + params.eventRepeat.join('&'),
+    };
+
+    // console.log('getData urls: ', urls);
+
+    fetch(urls.booking)
+      .then(function(bookingsResponse) {
+        return bookingsResponse.json();
+      })
+      .then(function(bookings) {
+        console.log(bookings);
+      });
   }
   render(element) {
     const thisBooking = this;
