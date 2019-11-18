@@ -33,11 +33,10 @@ export class DataPicker extends BaseWidget {
       locale: {
         'firstDayOfWeek': 1,
       },
-      onChange: function (selectedDates, dateToStr) {
+      onChange: function (selectedData, dateToStr) {
         thisWidget.value = dateToStr;
       }
     };
-
     flatpickr(thisWidget.dom.input, dataOptions);
   }
   parseValue(value) {
@@ -47,6 +46,5 @@ export class DataPicker extends BaseWidget {
     return true;
   }
   renderValue() {
-
   }
 }
