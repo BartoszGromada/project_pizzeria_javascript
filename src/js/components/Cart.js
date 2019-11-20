@@ -70,9 +70,7 @@ export class Cart {
 
     for (let product of thisCart.products) {
       thisCart.totalNumber += product.amount;
-
       thisCart.subtotalPrice += product.price;
-
     }
       
     thisCart.totalPrice = thisCart.subtotalPrice + thisCart.deliveryFee;

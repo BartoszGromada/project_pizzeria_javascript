@@ -14,6 +14,7 @@ export class DataPicker extends BaseWidget {
     thisWidget.dom.input = thisWidget.dom.wrapper.querySelector(select.widgets.datePicker.input);
     
     thisWidget.initPlugin();
+    
   }
   initPlugin() {
     const thisWidget = this;
