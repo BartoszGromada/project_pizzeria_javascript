@@ -44,6 +44,8 @@ export class Booking {
                                     + '?' + params.eventRepeat.join('&'),
     };
 
+    console.log(urls);
+
     Promise.all([
       fetch(urls.booking),
       fetch(urls.eventCurrent),
@@ -62,6 +64,8 @@ export class Booking {
       .then(function([bookings, eventCurrent, eventRepeat]) {
         thisBooking.parseData(bookings, eventCurrent, eventRepeat);
         console.log(bookings);
+        console.log(eventCurrent);
+        console.log(eventRepeat);
       });
   }
   parseData(bookings, eventCurrent, eventRepeat) {
@@ -71,13 +75,16 @@ export class Booking {
 
     for (let item of bookings) {
       thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
+      console.log(item.date);
+      console.log(item.hour);
+      console.log(item.duration);
+      console.log(item.table);
     }
 
     for (let item of eventCurrent) {
       thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
     }
 
-    const minDate = thisBooking.dataPicker.minDate;
     const maxDate = thisBooking.dataPicker.maxDate;
 
     for (let item of eventRepeat) {
@@ -111,13 +118,13 @@ export class Booking {
     const thisBooking = this;
 
     thisBooking.date = thisBooking.dataPicker.value;
-    thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
+    thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);f
 
     let allAvailable = false;
 
     if (
       typeof thisBooking.booked[thisBooking.date] == 'undefined' 
-      ||
+      || 
       typeof thisBooking.booked[thisBooking.date][thisBooking.hour] == 'undefined'
     ) {
       allAvailable = true;
