@@ -44,8 +44,6 @@ export class Booking {
                                     + '?' + params.eventRepeat.join('&'),
     };
 
-    console.log(urls);
-
     Promise.all([
       fetch(urls.booking),
       fetch(urls.eventCurrent),
@@ -84,11 +82,8 @@ export class Booking {
 
     for (let item of eventRepeat) {
       if (item.repeat == 'daily') {
-        const itemDateParse = Date.parse(item.date);
-        console.log('item.date: ', item.date);
-        console.log('itemDateParse: ', itemDateParse);
-        console.log('minDate: ', minDate);
-        for (let loopDate = minDate; loopDate <= maxDate; loopDate = utils.addDays(loopDate, 1)) {
+        const itemDateParse = new Date(item.date);
+        for (let loopDate = itemDateParse; loopDate <= maxDate; loopDate = utils.addDays(loopDate, 1)) {
           thisBooking.makeBooked(utils.dateToStr(loopDate), item.hour, item.duration, item.table);
         }
       }
@@ -235,8 +230,8 @@ export class Booking {
       })
       .then(function(parsedResponse) {
         console.log('parsedResponse: ', parsedResponse);
+        thisBooking.getData();
       });
     
-    thisBooking.getData();
   }
 }
