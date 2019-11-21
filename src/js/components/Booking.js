@@ -118,7 +118,7 @@ export class Booking {
     const thisBooking = this;
 
     thisBooking.date = thisBooking.dataPicker.value;
-    thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);f
+    thisBooking.hour = utils.hourToNumber(thisBooking.hourPicker.value);
 
     let allAvailable = false;
 
@@ -207,7 +207,7 @@ export class Booking {
 
     const payload = {
       title: 'Boooking for ' + thisBooking.peopleAmount.value + ' person.',
-      table: thisBooking.tableNumber,
+      table: parseInt(thisBooking.tableNumber),
       date: thisBooking.dataPicker.value,
       hour: thisBooking.hourPicker.value,
       duration: thisBooking.hoursAmount.value,
