@@ -72,6 +72,7 @@ export class CartProduct {
     payloadData.amount = thisCartProduct.amount,
     payloadData.params = thisCartProduct.params;
 
+    console.log(payloadData);
     return payloadData;
   }
 }

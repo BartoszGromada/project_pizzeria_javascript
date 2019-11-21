@@ -253,15 +253,38 @@
       "starters": ["lemonWater"]
     }
   ],
-  "booking": [
-    {
+  "booking": [{
+    "id": 1,
+    "date": "2019-11-22",
+    "hour": "17:00",
+    "table": 1,
+    "duration": 3,
+    "ppl": 4,
+    "starters": ["water"]
+  }],
+  "gallery": [{
       "id": 1,
-      "date": "2019-11-22",
-      "hour": "17:00",
-      "table": 1,
-      "duration": 3,
-      "ppl": 4,
-      "starters": ["water"]
+      "image": {
+        "title": "image_1",
+        "alt": "image_1",
+        "source": "./images/main/pizza-3.jpg"
+      }
+    },
+    {
+      "id": 2,
+      "image": {
+        "title": "image_2",
+        "alt": "image_2",
+        "source": "./images/main/pizza-4.jpg"
+      }
+    },
+    {
+      "id": 3,
+      "image": {
+        "title": "image_3",
+        "alt": "image_3",
+        "source": "./images/main/pizza-5.jpg"
+      }
     }
   ]
 }
