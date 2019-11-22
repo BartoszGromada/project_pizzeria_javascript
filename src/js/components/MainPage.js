@@ -41,11 +41,16 @@ export class MainPage {
   }
   renderImageList() {
     const thisMainPage = this;
-
-    const generatedHTML = templates.image({image: thisMainPage.dataImages});
+    const mappedImages = thisMainPage.dataImages.map(function(imageObject) {
+      return imageObject.image;
+    });
+    console.log(mappedImages);
+    const arrayConvertedToObject = Object.assign({}, mappedImages);
+    console.log(arrayConvertedToObject)
+    const generatedHTML = templates.image({image: arrayConvertedToObject});
     console.log('wygenerowany 3 x html:', generatedHTML);
-    //thisMainPage.element = utils.createDOMFromHTML(generatedHTML);
-    //console.log(thisMainPage.element);
-    //thisMainPage.imageList.appendChild(thisMainPage.element);
+    thisMainPage.element = utils.createDOMFromHTML(generatedHTML);
+    thisMainPage.imageList.appendChild(thisMainPage.element);
+    console.log(thisMainPage.element);
   }
 }

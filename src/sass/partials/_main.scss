@@ -26,6 +26,7 @@
   background: url('../../images/main/pizza-2.jpg');
   margin-left: 0.5%;
 }
+
 .open-hours, .carusel, .gallery, .instagram {
   flex: 0 0 100%;
 }
@@ -33,6 +34,7 @@
 .open-hours {
   border-radius: $radius;
   background-color: $color-main;
+
   & p:first-child {
     font-size: 26px;
     letter-spacing: -1px;
@@ -43,6 +45,7 @@
     text-transform: uppercase;
     margin-bottom: 0;
   }
+
   & p:last-child {
     margin-top: 0;
     font-size: 14px;
