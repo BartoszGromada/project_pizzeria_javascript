@@ -65,6 +65,21 @@ const app = {
 
     const mainPageElem = document.querySelector(select.containerOf.mainPage);
     thisApp.main = new MainPage(mainPageElem);
+
+    thisApp.mainLinks = document.querySelectorAll(select.main.links);
+
+    for (let link of thisApp.mainLinks) {
+      link.addEventListener('click', function (event) {
+        const clickedElement = this;
+        event.preventDefault();
+
+        const id = clickedElement.getAttribute('href').replace('#', '');
+
+        thisApp.activatePage(id);
+
+        window.location.hash = '#/' + id;
+      });
+    };
   },
   initMenu: function () {
     const thisApp = this;

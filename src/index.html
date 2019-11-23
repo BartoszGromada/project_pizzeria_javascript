@@ -250,8 +250,14 @@
   <script id="template-main-page" type="text/x-handlebars-template">
     <div class="main-page">
       <div class="row">
-        <div class="link link-order"></div>
-        <div class="link link-booking"></div>
+        <div class="link link-order">
+          <a href="#order">ORDER ONLINE</a>
+          <p>Delicious food delivered to your door</p>
+        </div>
+        <div class="link link-booking">
+          <a href="#booking">BOOK A TABLE</a>
+          <p>Delicious food on restaurant</p>
+        </div>
       </div>
       <div class="row">
         <div class="open-hours">
@@ -268,15 +274,18 @@
       </div>
       <div class="row">
           <div class="instagram">
+            <a href="#">View more on Instargram</a>
           </div>
       </div>
     </div>
   </script>
 
   <script id="template-image-element" type="text/x-handlebars-template">
-    {{#each image}}
-      <img src="{{source}}" class="" alt="{{alt}}" title="{{title}}">
-    {{/each}}
+    <div class="image-wrapper">
+      {{#each image}}
+        <img src="{{source}}" class="gallery-image" alt="{{alt}}" title="{{title}}">
+      {{/each}}
+    </div>
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>

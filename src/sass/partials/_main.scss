@@ -1,3 +1,15 @@
+@mixin after_box() {
+  @include center();
+  color: $color-light;
+}
+
+@mixin after_box_hover() {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -60%);
+}
+
 .main-page {
   margin: ($base-size * 3.5) auto;
   padding: ($base-size * 6) ($base-size * 4);
@@ -15,16 +27,87 @@
   margin-bottom: 5px;
   height: 110px;
   border-radius: $radius;
+  position: relative;
 }
 
 .link-order {
   background: url('../../images/main/pizza-1.jpg');
   margin-right: 0.5%;
+
+  & a {
+    text-decoration: none;
+    font-size: 24px;
+    letter-spacing: -1px;
+    font-family: $font-header;
+    font-weight: 700;
+    @include after_box();
+    transition: $transition;
+  }
+  & p {
+    opacity: 0;
+  }
+
+  &:hover a {
+    text-decoration: none;
+    font-size: 24px;
+    letter-spacing: -1px;
+    font-family: $font-header;
+    font-weight: 700;
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -65%);
+  }
+
+  &:hover p {
+    opacity: 100;
+    color: $color-light;
+    font-size: 8px;
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -45%);
+  }
 }
 
 .link-booking {
   background: url('../../images/main/pizza-2.jpg');
   margin-left: 0.5%;
+
+  & a {
+    text-decoration: none;
+    font-size: 24px;
+    letter-spacing: -1px;
+    font-family: $font-header;
+    font-weight: 700;
+    @include after_box();
+    transition: $transition;
+  }
+  & p {
+    opacity: 0;
+  }
+
+  &:hover a {
+    text-decoration: none;
+    font-size: 24px;
+    letter-spacing: -1px;
+    font-family: $font-header;
+    font-weight: 700;
+    position: absolute;
+    left: 50%;
+    top: 35%;
+    transform: translate(-50%, -65%);
+  }
+
+  &:hover p {
+    opacity: 100;
+    color: $color-light;
+    font-size: 8px;
+    position: absolute;
+    left: 50%;
+    top: 55%;
+    transform: translate(-50%, -45%);
+  }
 }
 
 .open-hours, .carusel, .gallery, .instagram {
@@ -55,6 +138,21 @@
     text-align: center;
     text-transform: uppercase;
   }
+}
+
+
+.gallery-image {
+  height: 170px;
+  width: 32.3%;
+  border-radius: $radius;
+  margin: 0 2px;
+}
+
+.instagram a {
+  line-height: 23px;
+  color: $color-main;
+  font-family: $font-text;
+  font-weight: 400;
 }
 
 .row, .link, .open-hours, .carusel, .gallery, .instagram {

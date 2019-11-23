@@ -267,7 +267,7 @@
       "image": {
         "title": "image_1",
         "alt": "image_1",
-        "source": "./images/main/pizza-3.jpg"
+        "source": "./images/main/pizza-4.jpg"
       }
     },
     {
@@ -275,7 +275,7 @@
       "image": {
         "title": "image_2",
         "alt": "image_2",
-        "source": "./images/main/pizza-4.jpg"
+        "source": "./images/main/pizza-5.jpg"
       }
     },
     {
@@ -283,7 +283,31 @@
       "image": {
         "title": "image_3",
         "alt": "image_3",
-        "source": "./images/main/pizza-5.jpg"
+        "source": "./images/main/pizza-6.jpg"
+      }
+    },
+    {
+      "id": 4,
+      "image": {
+        "title": "image_4",
+        "alt": "image_4",
+        "source": "./images/main/pizza-7.jpg"
+      }
+    },
+    {
+      "id": 5,
+      "image": {
+        "title": "image_5",
+        "alt": "image_5",
+        "source": "./images/main/pizza-8.jpg"
+      }
+    },
+    {
+      "id": 6,
+      "image": {
+        "title": "image_6",
+        "alt": "image_6",
+        "source": "./images/main/pizza-9.jpg"
       }
     }
   ]
