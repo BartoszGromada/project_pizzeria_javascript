@@ -310,5 +310,47 @@
         "source": "./images/main/pizza-9.jpg"
       }
     }
+  ],
+  "opinions": [{
+      "id": 1,
+      "opinion": {
+        "title": "Amazing",
+        "text": "Tasty pizza, professional service. I recommend 100%.",
+        "author": "~David Copperfild",
+        "class": "opinionOne",
+        "active": "active"
+      },
+      "options": {
+        "data-opinion": "opinionOne",
+        "data-slajder": "1",
+        "class": "active"
+      }
+    },
+    {
+      "id": 2,
+      "opinion": {
+        "title": "Wonderfull",
+        "text": "Great starters, tasty main dishes. In addition, very large portions.",
+        "author": "~Margaret Tacher",
+        "class": "opinionTwo"
+      },
+      "options": {
+        "data-opinion": "opinionTwo",
+        "data-slajder": "2"
+      }
+    },
+    {
+      "id": 3,
+      "opinion": {
+        "title": "Professional",
+        "text": "nothing more nothing less. cool!",
+        "author": "~Fredy Mercury",
+        "class": "opinionThree"
+      },
+      "options": {
+        "data-opinion": "opinionThree",
+        "data-slajder": "3"
+      }
+    }
   ]
 }

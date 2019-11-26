@@ -270,32 +270,7 @@
             <div class="carusel-image">
               <img src="images/main/pizza-3.jpg">
             </div>
-            <div class="carusel-slaider">
-                <div class="carusel-text">
-                  <div class="opinion opinionOne active">
-                    <h3>Amazing</h3>
-                    <p>"Tasty pizza, professional service. I recommend 100%."</p>
-                    <p>~David Copperfild</p>
-                  </div>
-                  <div class="opinion opinionTwo">
-                    <h3>Wonderfull</h3>
-                    <p>"Great starters, tasty main dishes. In addition, very large portions."</p>
-                    <p>~Margaret TAcher</p>
-                  </div>
-                  <div class="opinion opinionThree">
-                    <h3>Professional</h3>
-                    <p>"nothing more nothing less. cool!"</p>
-                    <p>~Fredy Mercury</p>
-                  </div>
-                </div>
-                <div class="carusel-option">
-                  <ul>
-                    <li data-opinion="opinionOne" data-slajder="1" class="active"></li>
-                    <li data-opinion="opinionTwo" data-slajder="2" ></li>
-                    <li data-opinion="opinionThree" data-slajder="3" ></li>
-                  </ul>
-                </div>
-            </div>
+            <div class="carusel-slaider"></div>
           </div>
       </div>
       <div class="row">
@@ -312,27 +287,32 @@
   <script id="template-image-element" type="text/x-handlebars-template">
     <div class="image-wrapper">
       {{#each image}}
-        <img src="{{source}}" class="gallery-image" alt="{{alt}}" title="{{title}}">
+      <div class="gallery-image">
+        <img src="{{source}}" alt="{{alt}}" title="{{title}}">
+      </div>
       {{/each}}
     </div>
   </script>
 
-  <script id="template-opinion-text" type="text/x-handlebars-template">
+  <script id="template-opinion-element" type="text/x-handlebars-template">
     <div class="carusel-text">
-      <div class="opinion opinionOne active">
-        <h3>Amazing</h3>
-        <p>"Tasty pizza, professional service. I recommend 100%."</p>
-        <p>~David Copperfild</p>
+      {{#each opinion}}
+      <div class="opinion {{class}} {{active}}">
+        <h3>{{title}}</h3>
+        <p>{{text}}</p>
+        <p>{{author}}</p>
       </div>
-      <div class="opinion opinionTwo">
-        <h3>Wonderfull</h3>
-        <p>"Great starters, tasty main dishes. In addition, very large portions."</p>
-        <p>~Margaret TAcher</p>
-      </div>
-      <div class="opinion opinionThree">
-        <h3>Professional</h3>
-        <p>"nothing more nothing less. cool!"</p>
-        <p>~Fredy Mercury</p>
+      {{/each}}
+    </div>
+  </script>
+
+  <script id="template-opinion-option" type="text/x-handlebars-template">
+      <div class="carusel-option">
+        <ul>
+          {{#each options}}
+          <li data-opinion="{{data-opinion}}" data-slajder="{{data-slajder}}" class="{{class}}"></li>
+          {{/each}}
+        </ul>
       </div>
   </script>
 

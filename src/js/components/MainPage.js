@@ -10,7 +10,6 @@ export class MainPage {
     thisMainPage.renderPage();
     thisMainPage.getElements();
     thisMainPage.getData();
-    thisMainPage.initSlajder();
   }
   renderPage() {
     const thisMainPage = this;
@@ -23,22 +22,31 @@ export class MainPage {
     const thisMainPage = this;
 
     thisMainPage.imageList = document.querySelector(select.containerOf.image);
-    thisMainPage.circleList = document.querySelectorAll(select.main.circle);
+    thisMainPage.opinionsList = document.querySelector(select.containerOf.opinions);
   }
   getData() {
     const thisMainPage = this;
     
     thisMainPage.dataImage = {};
-    const url = settings.db.url + '/' + settings.db.gallery;
+    const urlOne = settings.db.url + '/' + settings.db.gallery;
+    const urlTwo = settings.db.url + '/' + settings.db.opinions;
 
-    fetch(url)
+    fetch(urlOne)
       .then(function (rawResponse) {
         return rawResponse.json();
       })
       .then(function (parsedResponse) {
         thisMainPage.dataImages = parsedResponse;
-        console.log('dane pobrane z API: ', thisMainPage.dataImages);
         thisMainPage.renderImageList();
+      });
+
+    fetch(urlTwo)
+      .then(function (rawResponse) {
+        return rawResponse.json();
+      })
+      .then(function (parsedResponse) {
+        thisMainPage.dataOpinions = parsedResponse;
+        thisMainPage.renderOpinionsList();
       });
   }
   renderImageList() {
@@ -51,9 +59,35 @@ export class MainPage {
     thisMainPage.element = utils.createDOMFromHTML(generatedHTML);
     thisMainPage.imageList.appendChild(thisMainPage.element);
   }
+  renderOpinionsList() {
+    const thisMainPage = this;
+
+    const mappedOpinons = thisMainPage.dataOpinions.map(function(opinionObject) {
+      return opinionObject.opinion;
+    });
+    const mappedOptions = thisMainPage.dataOpinions.map(function(opinionObject) {
+      return opinionObject.options;
+    });
+
+    const opinionsConvertedToObject = Object.assign({}, mappedOpinons);
+    const optionsConvertedToObject = Object.assign({}, mappedOptions);
+
+    const opinionHTML = templates.opinions({opinion: opinionsConvertedToObject});
+    const optionsHTML = templates.options({options: optionsConvertedToObject});
+
+    thisMainPage.opinions = utils.createDOMFromHTML(opinionHTML);
+    thisMainPage.options = utils.createDOMFromHTML(optionsHTML);
+
+    thisMainPage.opinionsList.appendChild(thisMainPage.opinions);
+    thisMainPage.opinionsList.appendChild(thisMainPage.options);
+
+    thisMainPage.initSlajder();
+  }
   initSlajder() {
     const thisMainPage = this;
 
+    thisMainPage.circleList = document.querySelectorAll(select.main.circle);
+    
     for (let circle of thisMainPage.circleList) {
       circle.addEventListener('click', function(event) {
         event.preventDefault();

@@ -78,6 +78,25 @@ $base-size: 12px;
   opacity: 1;
 }
 
+@mixin after_box() {
+  @include center();
+  color: $color-light;
+}
+
+@mixin after_box_hover_a() {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -65%);
+}
+
+@mixin after_box_hover_p() {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -45%);
+}
+
 /* Helpers */
 
 .no-spacing {

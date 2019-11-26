@@ -1,21 +1,4 @@
-@mixin after_box() {
-  @include center();
-  color: $color-light;
-}
-
-@mixin after_box_hover_a() {
-  position: absolute;
-  left: 50%;
-  top: 35%;
-  transform: translate(-50%, -65%);
-}
-
-@mixin after_box_hover_p() {
-  position: absolute;
-  left: 50%;
-  top: 55%;
-  transform: translate(-50%, -45%);
-}
+// GLOBAL //
 
 .main-page {
   margin: ($base-size * 3.5) auto;
@@ -29,6 +12,14 @@
   display: flex;
 }
 
+.open-hours,
+.carusel,
+.gallery-wrapper,
+.instagram {
+  flex: 0 0 100%;
+}
+
+// LINK AND OPEN //
 .link {
   flex: 0 0 49.5%;
   margin-bottom: 5px;
@@ -38,44 +29,17 @@
 }
 
 .link-order {
-  background: url('../../images/main/pizza-1.jpg');
+  background: url("../../images/main/pizza-1.jpg");
   margin-right: 0.5%;
-
-  a {
-    text-decoration: none;
-    font-size: 24px;
-    letter-spacing: -1px;
-    font-family: $font-header;
-    font-weight: 700;
-    @include after_box();
-    transition: $transition;
-  }
-
-  p {
-    opacity: 0;
-  }
-
-  &:hover a {
-    text-decoration: none;
-    font-size: 24px;
-    letter-spacing: -1px;
-    font-family: $font-header;
-    font-weight: 700;
-    @include after_box_hover_a();
-  }
-
-  &:hover p {
-    opacity: 100;
-    color: $color-light;
-    font-size: 8px;
-    @include after_box_hover_p();
-  }
 }
 
 .link-booking {
-  background: url('../../images/main/pizza-2.jpg');
+  background: url("../../images/main/pizza-2.jpg");
   margin-left: 0.5%;
+}
 
+.link-order,
+.link-booking {
   a {
     text-decoration: none;
     font-size: 24px;
@@ -105,10 +69,6 @@
     font-size: 8px;
     @include after_box_hover_p();
   }
-}
-
-.open-hours, .carusel, .gallery, .instagram {
-  flex: 0 0 100%;
 }
 
 .open-hours {
@@ -137,35 +97,7 @@
   }
 }
 
-.gallery-image {
-  height: 160px;
-  width: 31.5%;
-  border-radius: $radius;
-  margin: 3px 4px;
-}
-
-.instagram a {
-  line-height: 23px;
-  color: $color-main;
-  font-family: $font-text;
-  font-weight: 400;
-}
-
-.carusel {
-  display: flex;
-  margin: $base-size * 4 0;
-}
-
-.carusel-image {
-  flex: 0 0 31.5%;
-
-  img {
-    height: 160px;
-    width: 100%;
-    border-radius: $radius;
-  }
-}
-
+// CARUSEL //
 .carusel-slaider {
   flex: 0 0 68.5%;
 }
@@ -174,7 +106,7 @@
   height: 160px;
   padding: 0 $base-size * 2;
   text-align: justify;
-  position: relative
+  position: relative;
 }
 
 .opinion {
@@ -191,7 +123,6 @@
   }
 }
 
-
 .carusel-option {
   padding: 0 30%;
 
@@ -207,4 +138,70 @@
   .active {
     background-color: $color-slaider;
   }
+}
+
+// GALLERY //
+
+.image-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+.gallery-image {
+  border: 1px blue solid;
+  height: 160px;
+  flex: 0 0 31.5%;
+  flex-wrap: wrap;
+  img {
+  height: 100%;
+  width: 100%;
+  margin: 3px 4px;
+  border-radius: $radius;
+  }
+}
+
+/* .gallery-image {
+  position: relative;
+  &::after {
+    position: absolute;
+    display: block;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: #84817a;
+    opacity: 0.3;
+  }
+} */
+
+.gallery-ikon i {
+  font-size: 18px;
+
+  &:hover {
+    color: $color-main;
+  }
+}
+
+
+
+.carusel {
+  display: flex;
+  margin: $base-size * 4 0;
+}
+
+.carusel-image {
+  flex: 0 0 31.5%;
+
+  img {
+    height: 160px;
+    width: 100%;
+    border-radius: $radius;
+  }
+}
+
+// INSTAGRAM //
+.instagram a {
+  line-height: 23px;
+  color: $color-main;
+  font-family: $font-text;
+  font-weight: 400;
 }

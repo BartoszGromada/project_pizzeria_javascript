@@ -8,6 +8,8 @@ export const select = {
     bookingWidget: '#template-booking-widget',
     mainPage: '#template-main-page',
     image: '#template-image-element',
+    opinions: '#template-opinion-element',
+    options: '#template-opinion-option',
   },
   containerOf: {
     menu: '#product-list',
@@ -16,6 +18,7 @@ export const select = {
     booking: '.booking-wrapper',
     mainPage: '.main-wrapper',
     image: '.gallery-wrapper',
+    opinions: '.carusel-slaider',
   },
   all: {
     menuProducts: '#product-list > .product',
@@ -128,6 +131,7 @@ export const settings = {
     booking: 'booking',
     event: 'event',
     gallery: 'gallery',
+    opinions: 'opinions',
     dateStartParamKey: 'date_gte',
     dateEndParamKey: 'date_lte',
     notRepeatParam: 'repeat=false',
@@ -141,4 +145,6 @@ export const templates = {
   bookingWidget: Handlebars.compile(document.querySelector(select.templateOf.bookingWidget).innerHTML),
   mainPage: Handlebars.compile(document.querySelector(select.templateOf.mainPage).innerHTML),
   image: Handlebars.compile(document.querySelector(select.templateOf.image).innerHTML),
+  opinions: Handlebars.compile(document.querySelector(select.templateOf.opinions).innerHTML),
+  options: Handlebars.compile(document.querySelector(select.templateOf.options).innerHTML),
 };
