@@ -81,9 +81,9 @@ export class MainPage {
     thisMainPage.opinionsList.appendChild(thisMainPage.opinions);
     thisMainPage.opinionsList.appendChild(thisMainPage.options);
 
-    thisMainPage.initSlajder();
+    thisMainPage.initSlider();
   }
-  initSlajder() {
+  initSlider() {
     const thisMainPage = this;
 
     thisMainPage.circleList = document.querySelectorAll(select.main.circle);
@@ -96,17 +96,25 @@ export class MainPage {
         thisMainPage.changeCircle();
       });
     }
-    const opinions = document.querySelectorAll('.opinion');
+    thisMainPage.opinions = document.querySelectorAll('.opinion');
     
     let opinionNumber = 0;
 
     setInterval(function(){ 
-      let selectOpinion = opinions[opinionNumber];
-      console.log(selectOpinion);
-      selectOpinion.classList.remove('active');
-      opinionNumber =+ 1;
+
+      if (opinionNumber >= 2) {
+        thisMainPage.opinions[2].classList.remove('active');
+        thisMainPage.opinions[0].classList.add('active');
+        opinionNumber = 0;
+      }
+      
+      let selectOpinion = thisMainPage.opinions[opinionNumber];
       console.log(opinionNumber);
-      selectOpinion = opinions[opinionNumber];
+      console.log(selectOpinion)
+      selectOpinion.classList.remove('active');
+      opinionNumber += 1;
+      selectOpinion = thisMainPage.opinions[opinionNumber];
+      console.log(opinionNumber);
       console.log(selectOpinion)
       selectOpinion.classList.add('active');
      }, 3000);
