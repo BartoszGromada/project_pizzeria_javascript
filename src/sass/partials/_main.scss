@@ -47,7 +47,7 @@
     font-family: $font-header;
     font-weight: 700;
     @include after_box();
-    transition: $transition;
+    transition: linear 1s;
   }
 
   p {
@@ -144,42 +144,60 @@
 
 .image-wrapper {
   display: flex;
-  width: 100%;
+  flex-wrap: wrap;
 }
 
 .gallery-image {
-  border: 1px blue solid;
   height: 160px;
   flex: 0 0 31.5%;
-  flex-wrap: wrap;
+  margin: 3px 4px;
+  position: relative;
+  z-index: 0;
+
   img {
   height: 100%;
   width: 100%;
-  margin: 3px 4px;
   border-radius: $radius;
   }
-}
 
-/* .gallery-image {
-  position: relative;
-  &::after {
+  i {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%);
+    color: $color-light;
+    z-index: -1;
+  }
+
+  &:hover i {
+    z-index: 2;
+  }
+
+  i:hover {
+    color: $color-main;
+  }
+
+  .fa-share-alt {
+    left: 55%;
+    transform: translate(-45%);
+  }
+
+  .fa-heart {
+    left: 45%;
+    transform: translate(-55%);
+  }
+
+  &:hover::after {
     position: absolute;
     display: block;
     content: "";
     width: 100%;
     height: 100%;
-    background: #84817a;
+    top: 0;
+    background: $color-dark;
     opacity: 0.3;
+    z-index: 1;
   }
-} */
-
-.gallery-ikon i {
-  font-size: 18px;
-
-  &:hover {
-    color: $color-main;
-  }
-}
+} 
 
 
 

@@ -87,6 +87,7 @@ export class MainPage {
     const thisMainPage = this;
 
     thisMainPage.circleList = document.querySelectorAll(select.main.circle);
+    console.log(thisMainPage.circleList[0]);
     
     for (let circle of thisMainPage.circleList) {
       circle.addEventListener('click', function(event) {
@@ -95,6 +96,20 @@ export class MainPage {
         thisMainPage.changeCircle();
       });
     }
+    const opinions = document.querySelectorAll('.opinion');
+    
+    let opinionNumber = 0;
+
+    setInterval(function(){ 
+      let selectOpinion = opinions[opinionNumber];
+      console.log(selectOpinion);
+      selectOpinion.classList.remove('active');
+      opinionNumber =+ 1;
+      console.log(opinionNumber);
+      selectOpinion = opinions[opinionNumber];
+      console.log(selectOpinion)
+      selectOpinion.classList.add('active');
+     }, 3000);
   }
   changeOpinion() {
     const clickedElement = event.target;
