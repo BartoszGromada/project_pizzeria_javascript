@@ -3,11 +3,18 @@
   color: $color-light;
 }
 
-@mixin after_box_hover() {
+@mixin after_box_hover_a() {
   position: absolute;
   left: 50%;
-  top: 40%;
-  transform: translate(-50%, -60%);
+  top: 35%;
+  transform: translate(-50%, -65%);
+}
+
+@mixin after_box_hover_p() {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -45%);
 }
 
 .main-page {
@@ -43,6 +50,7 @@
     @include after_box();
     transition: $transition;
   }
+
   & p {
     opacity: 0;
   }
@@ -53,20 +61,14 @@
     letter-spacing: -1px;
     font-family: $font-header;
     font-weight: 700;
-    position: absolute;
-    left: 50%;
-    top: 35%;
-    transform: translate(-50%, -65%);
+    @include after_box_hover_a();
   }
 
   &:hover p {
     opacity: 100;
     color: $color-light;
     font-size: 8px;
-    position: absolute;
-    left: 50%;
-    top: 55%;
-    transform: translate(-50%, -45%);
+    @include after_box_hover_p();
   }
 }
 
@@ -83,6 +85,7 @@
     @include after_box();
     transition: $transition;
   }
+
   & p {
     opacity: 0;
   }
@@ -93,20 +96,14 @@
     letter-spacing: -1px;
     font-family: $font-header;
     font-weight: 700;
-    position: absolute;
-    left: 50%;
-    top: 35%;
-    transform: translate(-50%, -65%);
+    @include after_box_hover_a();
   }
 
   &:hover p {
     opacity: 100;
     color: $color-light;
     font-size: 8px;
-    position: absolute;
-    left: 50%;
-    top: 55%;
-    transform: translate(-50%, -45%);
+    @include after_box_hover_p();
   }
 }
 
@@ -140,12 +137,11 @@
   }
 }
 
-
 .gallery-image {
-  height: 170px;
-  width: 32.3%;
+  height: 160px;
+  width: 31.5%;
   border-radius: $radius;
-  margin: 0 2px;
+  margin: 3px 4px;
 }
 
 .instagram a {
@@ -155,6 +151,60 @@
   font-weight: 400;
 }
 
-.row, .link, .open-hours, .carusel, .gallery, .instagram {
-  border: 1px solid blue;
+.carusel {
+  display: flex;
+  margin: $base-size * 4 0;
+}
+
+.carusel-image {
+  flex: 0 0 31.5%;
+
+  & img {
+    height: 160px;
+    width: 100%;
+    border-radius: $radius;
+  }
+}
+
+.carusel-slaider {
+  flex: 0 0 68.5%;
+}
+
+.carusel-text {
+  height: 160px;
+  padding: 0 $base-size * 2;
+  text-align: justify;
+  position: relative
+}
+
+.opinion {
+  color: $color-slaider;
+  font-size: 12px;
+  opacity: 0;
+  font-style: italic;
+  padding: 15px;
+  position: absolute;
+
+  &.active {
+    opacity: 100;
+    height: 100%;
+  }
+}
+
+
+.carusel-option {
+  padding: 0 30%;
+
+  & li {
+    display: inline-block;
+    border: 1px $color-slaider solid;
+    border-radius: 50%;
+    height: 10px;
+    width: 10px;
+    margin-right: 5px;
+  }
+
+  & .active {
+    background-color: $color-slaider;
+  }
 }

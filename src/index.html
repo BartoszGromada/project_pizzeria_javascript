@@ -267,6 +267,35 @@
       </div>
       <div class="row">
           <div class="carusel">
+            <div class="carusel-image">
+              <img src="images/main/pizza-3.jpg">
+            </div>
+            <div class="carusel-slaider">
+                <div class="carusel-text">
+                  <div class="opinion opinionOne active">
+                    <h3>Amazing</h3>
+                    <p>"Tasty pizza, professional service. I recommend 100%."</p>
+                    <p>~David Copperfild</p>
+                  </div>
+                  <div class="opinion opinionTwo">
+                    <h3>Wonderfull</h3>
+                    <p>"Great starters, tasty main dishes. In addition, very large portions."</p>
+                    <p>~Margaret TAcher</p>
+                  </div>
+                  <div class="opinion opinionThree">
+                    <h3>Professional</h3>
+                    <p>"nothing more nothing less. cool!"</p>
+                    <p>~Fredy Mercury</p>
+                  </div>
+                </div>
+                <div class="carusel-option">
+                  <ul>
+                    <li data-opinion="opinionOne" data-slajder="1" class="active"></li>
+                    <li data-opinion="opinionTwo" data-slajder="2" ></li>
+                    <li data-opinion="opinionThree" data-slajder="3" ></li>
+                  </ul>
+                </div>
+            </div>
           </div>
       </div>
       <div class="row">
@@ -286,6 +315,25 @@
         <img src="{{source}}" class="gallery-image" alt="{{alt}}" title="{{title}}">
       {{/each}}
     </div>
+  </script>
+
+  <script id="template-opinion-text" type="text/x-handlebars-template">
+    <div class="carusel-text">
+      <div class="opinion opinionOne active">
+        <h3>Amazing</h3>
+        <p>"Tasty pizza, professional service. I recommend 100%."</p>
+        <p>~David Copperfild</p>
+      </div>
+      <div class="opinion opinionTwo">
+        <h3>Wonderfull</h3>
+        <p>"Great starters, tasty main dishes. In addition, very large portions."</p>
+        <p>~Margaret TAcher</p>
+      </div>
+      <div class="opinion opinionThree">
+        <h3>Professional</h3>
+        <p>"nothing more nothing less. cool!"</p>
+        <p>~Fredy Mercury</p>
+      </div>
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.0/handlebars.min.js"></script>

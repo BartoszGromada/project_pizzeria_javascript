@@ -78,6 +78,7 @@ export const select = {
   },
   main: {
     links: '.link a',
+    circle: '.carusel-option li',
   },
 };
 

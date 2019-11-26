@@ -70,8 +70,8 @@ const app = {
 
     for (let link of thisApp.mainLinks) {
       link.addEventListener('click', function (event) {
-        const clickedElement = this;
         event.preventDefault();
+        const clickedElement = this;
 
         const id = clickedElement.getAttribute('href').replace('#', '');
 
@@ -79,7 +79,7 @@ const app = {
 
         window.location.hash = '#/' + id;
       });
-    };
+    }
   },
   initMenu: function () {
     const thisApp = this;
