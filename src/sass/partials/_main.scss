@@ -41,7 +41,7 @@
   background: url('../../images/main/pizza-1.jpg');
   margin-right: 0.5%;
 
-  & a {
+  a {
     text-decoration: none;
     font-size: 24px;
     letter-spacing: -1px;
@@ -51,7 +51,7 @@
     transition: $transition;
   }
 
-  & p {
+  p {
     opacity: 0;
   }
 
@@ -76,7 +76,7 @@
   background: url('../../images/main/pizza-2.jpg');
   margin-left: 0.5%;
 
-  & a {
+  a {
     text-decoration: none;
     font-size: 24px;
     letter-spacing: -1px;
@@ -86,7 +86,7 @@
     transition: $transition;
   }
 
-  & p {
+  p {
     opacity: 0;
   }
 
@@ -115,7 +115,7 @@
   border-radius: $radius;
   background-color: $color-main;
 
-  & p:first-child {
+  p:first-child {
     font-size: 26px;
     letter-spacing: -1px;
     color: $color-light;
@@ -126,7 +126,7 @@
     margin-bottom: 0;
   }
 
-  & p:last-child {
+  p:last-child {
     margin-top: 0;
     font-size: 14px;
     color: $color-light;
@@ -159,7 +159,7 @@
 .carusel-image {
   flex: 0 0 31.5%;
 
-  & img {
+  img {
     height: 160px;
     width: 100%;
     border-radius: $radius;
@@ -195,7 +195,7 @@
 .carusel-option {
   padding: 0 30%;
 
-  & li {
+  li {
     display: inline-block;
     border: 1px $color-slaider solid;
     border-radius: 50%;
@@ -204,7 +204,7 @@
     margin-right: 5px;
   }
 
-  & .active {
+  .active {
     background-color: $color-slaider;
   }
 }
