@@ -1,6 +1,6 @@
 /* eslint-disable linebreak-style */
 
-import {templates, select, settings} from '../settings.js';
+import {templates, select, settings, classNames} from '../settings.js';
 import {utils} from '../utils.js';
 
 export class MainPage {
@@ -86,7 +86,7 @@ export class MainPage {
   initSlider() {
     const thisMainPage = this;
 
-    thisMainPage.circleList = document.querySelectorAll(select.main.circle);
+    thisMainPage.circleList = document.querySelectorAll(select.main.circles);
     
     for (let circle of thisMainPage.circleList) {
       circle.addEventListener('click', function(event) {
@@ -95,17 +95,17 @@ export class MainPage {
         thisMainPage.changeCircle();
       });
     }
-    thisMainPage.opinions = document.querySelectorAll('.opinion');
+    thisMainPage.opinions = document.querySelectorAll(select.main.opinions);
     
     let opinionNumber = 0;
     
     setInterval(function(){ 
       
       let selectOpinion = thisMainPage.opinions[opinionNumber];
-      let selectCircle = thisMainPage.circleList[opinionNumber]
+      let selectCircle = thisMainPage.circleList[opinionNumber];
 
-      selectOpinion.classList.remove('active');
-      selectCircle.classList.remove('active');
+      selectOpinion.classList.remove(classNames.main.carusel);
+      selectCircle.classList.remove(classNames.main.carusel);
 
       if (opinionNumber >= thisMainPage.opinions.length - 1 ) {
         opinionNumber = 0; 
@@ -117,22 +117,22 @@ export class MainPage {
       selectOpinion = thisMainPage.opinions[opinionNumber];
       selectCircle = thisMainPage.circleList[opinionNumber];
 
-      selectOpinion.classList.add('active');
-      selectCircle.classList.add('active');
+      selectOpinion.classList.add(classNames.main.carusel);
+      selectCircle.classList.add(classNames.main.carusel);
     }, 3000);
   }
   changeOpinion() {
     const clickedElement = event.target;
-    const opinonClass = clickedElement.getAttribute('data-opinion');
+    const opinonClass = clickedElement.getAttribute(settings.main.dataOpinion);
     const selectOpinon = document.querySelector('.' + opinonClass);
-    const activeOpinion = document.querySelector('.opinion.active');
-    activeOpinion.classList.remove('active');
-    selectOpinon.classList.add('active');
+    const activeOpinion = document.querySelector(select.main.activeOpinion);
+    activeOpinion.classList.remove(classNames.main.carusel);
+    selectOpinon.classList.add(classNames.main.carusel);
   }
   changeCircle() {
     const clickedElement = event.target;
-    const activeCircle = document.querySelector('.carusel-option .active');
-    activeCircle.classList.remove('active');
-    clickedElement.classList.add('active');
+    const activeCircle = document.querySelector(select.main.activeCircle);
+    activeCircle.classList.remove(classNames.main.carusel);
+    clickedElement.classList.add(classNames.main.carusel);
   }
 }

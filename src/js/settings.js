@@ -81,7 +81,8 @@ export const select = {
   },
   main: {
     links: '.link a',
-    circle: '.carusel-option li',
+    circles: '.carusel-option li',
+    opinions: '.opinion',
   },
 };
 
@@ -103,6 +104,9 @@ export const classNames = {
   pages: {
     active: 'active',
   },
+  main: {
+    carusel: 'active',
+  }
 };
 
 export const settings = {
@@ -137,6 +141,9 @@ export const settings = {
     notRepeatParam: 'repeat=false',
     repeatParam: 'repeat_ne=false',
   },
+  main: {
+    dataOpinion: 'data-opinion',
+  }
 };
 
 export const templates = {
