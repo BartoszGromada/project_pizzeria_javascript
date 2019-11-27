@@ -87,7 +87,6 @@ export class MainPage {
     const thisMainPage = this;
 
     thisMainPage.circleList = document.querySelectorAll(select.main.circle);
-    console.log(thisMainPage.circleList[0]);
     
     for (let circle of thisMainPage.circleList) {
       circle.addEventListener('click', function(event) {
@@ -99,25 +98,28 @@ export class MainPage {
     thisMainPage.opinions = document.querySelectorAll('.opinion');
     
     let opinionNumber = 0;
-
+    
     setInterval(function(){ 
-
-      if (opinionNumber >= 2) {
-        thisMainPage.opinions[2].classList.remove('active');
-        thisMainPage.opinions[0].classList.add('active');
-        opinionNumber = 0;
-      }
       
       let selectOpinion = thisMainPage.opinions[opinionNumber];
-      console.log(opinionNumber);
-      console.log(selectOpinion)
+      let selectCircle = thisMainPage.circleList[opinionNumber]
+
       selectOpinion.classList.remove('active');
-      opinionNumber += 1;
+      selectCircle.classList.remove('active');
+
+      if (opinionNumber >= thisMainPage.opinions.length - 1 ) {
+        opinionNumber = 0; 
+      } 
+      else { 
+        opinionNumber += 1;
+      }
+      
       selectOpinion = thisMainPage.opinions[opinionNumber];
-      console.log(opinionNumber);
-      console.log(selectOpinion)
+      selectCircle = thisMainPage.circleList[opinionNumber];
+
       selectOpinion.classList.add('active');
-     }, 3000);
+      selectCircle.classList.add('active');
+    }, 3000);
   }
   changeOpinion() {
     const clickedElement = event.target;
