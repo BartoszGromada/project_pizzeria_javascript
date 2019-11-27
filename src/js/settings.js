@@ -83,6 +83,8 @@ export const select = {
     links: '.link a',
     circles: '.carusel-option li',
     opinions: '.opinion',
+    activeOpinion: '.opinion.active',
+    activeCircle: '.carusel-option .active',
   },
 };
 

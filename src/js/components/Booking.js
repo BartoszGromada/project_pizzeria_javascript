@@ -68,8 +68,11 @@ export class Booking {
 
     thisBooking.booked = {};
 
+    console.log(bookings);
+
     for (let item of bookings) {
       thisBooking.makeBooked(item.date, item.hour, item.duration, item.table);
+      console.log(item.table);
     }
 
     for (let item of eventCurrent) {
@@ -88,7 +91,7 @@ export class Booking {
     }
     thisBooking.updateDOM();
   }
-  makeBooked(date, hour, duration, table) {
+  makeBooked(date, hour, duration, tables) {
     const thisBooking = this;
 
     if (typeof thisBooking.booked[date] == 'undefined') {
@@ -102,7 +105,9 @@ export class Booking {
       if (typeof thisBooking.booked[date][hourBlock] == 'undefined') {
         thisBooking.booked[date][hourBlock] = [];
       }
-      thisBooking.booked[date][hourBlock].push(table);
+      for (let table of tables) {
+        thisBooking.booked[date][hourBlock].push(table);
+      }
     }
   }
   updateDOM() {
@@ -178,6 +183,9 @@ export class Booking {
   }
   tableVerification() {
     const thisBooking = this;
+
+    thisBooking.tableNumberArray =[];
+
     for (let table of thisBooking.dom.tables) {
       table.addEventListener('click', function(event) {
         event.preventDefault();
@@ -188,6 +196,7 @@ export class Booking {
           table.classList.add(classNames.booking.tableBooked);
           thisBooking.clickedElement = event.target;
           thisBooking.tableNumber = thisBooking.clickedElement.getAttribute(settings.booking.tableIdAttribute);
+          thisBooking.tableNumberArray.push(thisBooking.tableNumber);
         }
       });
     }
@@ -198,7 +207,7 @@ export class Booking {
 
     const payload = {
       title: 'Boooking for ' + thisBooking.peopleAmount.value + ' person.',
-      table: parseInt(thisBooking.tableNumber),
+      table: [],
       date: thisBooking.dataPicker.value,
       hour: thisBooking.hourPicker.value,
       duration: thisBooking.hoursAmount.value,
@@ -207,6 +216,10 @@ export class Booking {
       email: thisBooking.dom.email.value,
       starters: [],
     };
+
+    for (let tableNumber of thisBooking.tableNumberArray) {
+      payload.table.push(parseInt(tableNumber));
+    }
 
     for (let starter of thisBooking.dom.starters) {
       if (starter.checked == true) {
