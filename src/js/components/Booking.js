@@ -177,6 +177,8 @@ export class Booking {
     thisBooking.dom.submit.addEventListener('click', function() {
       event.preventDefault();
       thisBooking.sendBooking();
+      thisBooking.getData();
+      thisBooking.initWidgets();
     });
 
     thisBooking.tableVerification();
