@@ -30,21 +30,21 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
-        "json-server": "^0.15.1"
+        "json-server": "^0.16.1"
     },
     "devDependencies": {
         "autoprefixer-cli": "^1.0.0",
-        "browser-sync": "^2.26.3",
-        "copyfiles": "^2.1.0",
-        "eslint": "^5.14.1",
+        "browser-sync": "^2.26.12",
+        "copyfiles": "^2.3.0",
+        "eslint": "^7.7.0",
         "globstar": "^1.0.0",
-        "jshint": "^2.10.2",
-        "mkdirp": "^0.5.1",
-        "node-sass": "^4.11.0",
+        "jshint": "^2.12.0",
+        "mkdirp": "^1.0.4",
+        "node-sass": "^4.14.1",
         "npm-run-all": "^4.1.5",
         "nu-html-checker": "^0.1.0",
-        "onchange": "^5.2.0",
-        "stylelint": "^9.10.1",
-        "stylelint-scss": "^3.5.4"
+        "onchange": "^7.0.2",
+        "stylelint": "^13.6.1",
+        "stylelint-scss": "^3.18.0"
     }
 }
